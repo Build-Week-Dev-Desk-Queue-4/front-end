@@ -1,22 +1,22 @@
 import axios from 'axios';
 
-// After Login
 export const axiosWithAuth = () => {
-  const token = localStorage.getItem('token');
-  const tokenType = localStorage.getItem('tokenType');
+    const token  = window.localStorage.getItem('token');
 
-  return axios.create({
-    headers: {
-      Authorization: tokenType + token
-    }, baseURL: "https://devdeskq.herokuapp.com/"
-  });
-};
+    if(token === "undefined") {
+        console.log("NOT LOGGED IN");
+    }else{
+        console.log("LOGGED IN ", {
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`,
+        });
+    }
 
-//Login requests
-export const axiosLoginAuth = () => {
-
-  return axios.create({
-    headers: {
-      Authorization: "Basic bGFtYmRhLWNsaWVudDpsYW1iZGEtc2VjcmV0"
-    }, baseURL: "https://devdeskq.herokuapp.com/"
-  });
+    return axios.create({
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`
+        },
+        baseURL: 'https://devdeskq.herokuapp.com/'
+    })
+}
