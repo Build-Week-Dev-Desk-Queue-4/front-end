@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import {  Route } from "react-router-dom";
-//import  PrivateRoute from './components/PrivateRoute';
+import  PrivateRoute from './components/PrivateRoute';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
       <NavBar />
       {/* <Route exact path='/' component={LandingPage} />
       <Route path='/login' component={Login} />
-      <Route path="/signup" component={SignUp} /> */}
-      {/* <PrivateRoute exact path='/home' component={test} />
+      <Route path="/signup" component={SignUp} /> 
+      <PrivateRoute exact path='/home' component={test} />
       <PrivateRoute path="/" component={test} />
       <PrivateRoute path='/' component={test} />
       <PrivateRoute path='/' component={test} /> */}
