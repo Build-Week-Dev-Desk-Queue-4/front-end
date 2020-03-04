@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { axiosWithAuth } from "../utils/axiosWithAuth"
 
-export default function TicketCard() {
-    return (
-        <div>
-            TicketCard
-        </div>
-    )
+const TicketCard = ({ticket, toHome}) => {  
+    
+    
+    
+{
+      return (
+          <div className="ticketCard">
+              TicketCard
+              </div>
+    
+      );
 }
+    };
+    export default TicketCard;
