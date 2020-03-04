@@ -22,6 +22,7 @@ export default function Login(props) {
             .then(res => {
                 console.log(res.data)
                 console.log(res.data.token)
+                //store user id in localstorage
                 window.localStorage.setItem('token', res.data.token);
                 props.history.push('/protected');
             })
@@ -29,25 +30,25 @@ export default function Login(props) {
     };
 
    
-        return (
-        <div className="login-form">
-            <StyledSection>
+  return (
+  <div className="login-form">
+      <StyledSection>
       <StyledForm onSubmit={handleSubmit(handleLogin)}>
-      <StyledGroup>
-      <input type="text" placeholder="Username" name="username" ref={register} />
-      </StyledGroup>
-      <StyledGroup>
-      <input type="password" placeholder="Password" name="password" ref={register} />
-      </StyledGroup>
-      <StyledGroup>
-      <StyledButton block type="submit" color="success">
-          Login
-        </StyledButton>
-      </StyledGroup>
-    </StyledForm>
-    </StyledSection>
-            </div>
-        );
+        <StyledGroup>
+          <input type="text" placeholder="Username" name="username" ref={register} />
+        </StyledGroup>
+        <StyledGroup>
+          <input type="password" placeholder="Password" name="password" ref={register} />
+        </StyledGroup>
+        <StyledGroup>
+          <StyledButton block type="submit" color="success">
+              Login
+          </StyledButton>
+        </StyledGroup>
+      </StyledForm>
+      </StyledSection>
+      </div>
+  );
     
 }
 

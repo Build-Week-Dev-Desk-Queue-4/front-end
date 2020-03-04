@@ -18,7 +18,7 @@ const TicketCard = ({ticket, toHome}) => {
                 {ticket.comments.length > 0 ? ticket.comments.map(comment => {
                     return (
                         <div key={comment.id} >
-                            <p><span>{comment.first_name} {comment.last_name}</span>comment.username</p>
+                            <p><span>{comment.first_name} {comment.last_name}</span> {comment.username}</p>
                             <p>{comment.comment}</p>
                         </div>
                     );

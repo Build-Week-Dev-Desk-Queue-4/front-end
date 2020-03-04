@@ -19,7 +19,7 @@ const TicketList = (props) => {
         // assignee: "",
         // assigned_by: ""
     // }
-]);
+    ]);
 
     const toAxios = (id) =>{
         axiosWithAuth()
@@ -50,7 +50,6 @@ const TicketList = (props) => {
             {/* <TicketCard tickets={tickets} toHome={toHome} /> */}
             {tickets.length > 0 ? tickets.map(ticket => <TicketCard key={ticket.id} ticket={ticket} toHome={toHome} />) :
             <div>Loading tickets...</div>}
-            
         </div>
     )
 }
