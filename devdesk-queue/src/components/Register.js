@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { Button, InputGroup, Input } from "reactstrap";
+import { Button, InputGroup } from "reactstrap";
 import styled from "styled-components";
 
 
 export default function Register(props) {
 
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data);
+  //const onSubmit = data => console.log(data);
   console.log('Errors:', errors);
 
-  const [credentials, setCredentials] = useState({
-    username: '',
-    password: '',
-    role: '',
-    first_name: "",
-    last_name: '',
-    email: ''
-})
+//   const [credentials, setCredentials] = useState({
+//     username: '',
+//     password: '',
+//     role: '',
+//     first_name: "",
+//     last_name: '',
+//     email: ''
+// })
 
 
   const handleRegister = (data) => {

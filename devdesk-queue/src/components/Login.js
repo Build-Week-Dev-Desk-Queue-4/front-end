@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useForm } from "react-hook-form";
-import { Button, InputGroup, Input } from "reactstrap";
+import { Button, InputGroup } from "reactstrap";
 import styled from "styled-components";
 
 export default function Login(props) {
 
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    //const onSubmit = data => console.log(data);
     console.log(errors);
 
-    const [credentials, setCredentials] = useState({
-        username: '',
-        password: ''
-    })
+    // const [credentials, setCredentials] = useState({
+    //     username: '',
+    //     password: ''
+    // })
   
     const handleLogin = (data) => {
         console.log(data)
