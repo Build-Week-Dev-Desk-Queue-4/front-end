@@ -46,6 +46,7 @@ const TicketList = (props) => {
 
     return (
         <div className="card-container">
+            <h1>Questions In The Q</h1>
             {/* <TicketCard tickets={tickets} toHome={toHome} /> */}
             {tickets.length > 0 ? tickets.map(ticket => <TicketCard key={ticket.id} ticket={ticket} toHome={toHome} />) :
             <div>Loading tickets...</div>}

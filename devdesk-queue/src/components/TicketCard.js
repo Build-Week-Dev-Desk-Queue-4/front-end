@@ -7,18 +7,14 @@ import styled from "styled-components";
 const TicketCard = ({ticket, toHome}) => {  
     return (
         <div className="ticketCard">
-          <Row xs="4" med="3" xl="2">
-           <Card>
-            <CardBodyStyled>
+        <CardStyled>
+          <CardBodyStyled>
           <CardImgStyled top width="25%" src={ticket.asker.image} alt={`${ticket.asker.username}'s profile picture`} />
           <CardTitle>{ticket.asker.first_name} {ticket.asker.last_name} ({ticket.asker.username})</CardTitle>
                <CardQuesTitle>Question Title: {ticket.title}</CardQuesTitle>
                <CardCatTitle>Category: {ticket.category}</CardCatTitle>
                  <CardText><QuesDescSpanStyled>Question Description: </QuesDescSpanStyled>{ticket.description}</CardText>
-                  <CardSubtitle></CardSubtitle>
-                  <CardText></CardText>
-
-                  <div>
+            <div>
                 <h2>Comments:</h2>
                 {ticket.comments.length > 0 ? ticket.comments.map(comment => {
                     return (
@@ -30,11 +26,14 @@ const TicketCard = ({ticket, toHome}) => {
                 <div><p>Be the first to comment.</p></div>}
             </div>
                   </CardBodyStyled>
-        </Card>
-        </Row>
+        </CardStyled>
         </div>
     );
 };
+
+const CardStyled = styled.div`
+width: 50%;
+`
 
 const CardImgStyled = styled.img`
 border-radius: 50%;
@@ -43,7 +42,6 @@ border-radius: 50%;
 const CardBodyStyled = styled.body`
 color: blue;
 padding: 2%;
-width: 100%;
 border: 5px solid blue;
 margin: 2%;
 `
