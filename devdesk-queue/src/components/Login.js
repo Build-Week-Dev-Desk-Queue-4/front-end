@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useForm } from "react-hook-form";
 import { Button, InputGroup, Input } from "reactstrap";
 import styled from "styled-components";
 
 export default function Login(props) {
-
+    const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => console.log(data);
     console.log(errors);
@@ -24,7 +25,7 @@ export default function Login(props) {
                 console.log(res.data.token)
                 //store user id in localstorage
                 window.localStorage.setItem('token', res.data.token);
-                props.history.push('/protected');
+                history.push('/protected');
             })
             .catch(err => console.log('Post err', err));
     };

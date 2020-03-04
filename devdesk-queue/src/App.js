@@ -17,8 +17,7 @@ export default function App() {
     </div>
       <Route path='/Login' component={Login} />
       <Route path="/Register" component={Register} /> 
-      <PrivateRoute exact path='/home' component={TicketList} />
-      {/* <PrivateRoute path="/" component={test} /> */}
+      <PrivateRoute exact path='/protected' component={TicketList} />
     </div>
   );
 }
