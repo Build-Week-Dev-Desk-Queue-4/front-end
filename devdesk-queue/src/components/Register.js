@@ -34,7 +34,7 @@ export default function Register(props) {
     .catch(err => console.log('Post err', err));
   };
 
- {
+ 
     return(
       <div className="register-form">
         <StyledSection>
@@ -70,7 +70,7 @@ export default function Register(props) {
 
     )
   }
-}
+
 
 const StyledButton = styled(Button)`
   background-color: #0066ff;

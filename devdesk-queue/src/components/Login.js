@@ -20,13 +20,15 @@ export default function Login(props) {
         axiosWithAuth()
             .post('api/auth/login', data)
             .then(res => {
-                window.localStorage.setItem('token', res.data.payload);
+                console.log(res.data)
+                console.log(res.data.token)
+                window.localStorage.setItem('token', res.data.token);
                 props.history.push('/protected');
             })
             .catch(err => console.log('Post err', err));
     };
 
-   {
+   
         return (
         <div className="login-form">
             <StyledSection>
@@ -46,7 +48,7 @@ export default function Login(props) {
     </StyledSection>
             </div>
         );
-    }
+    
 }
 
 const StyledButton = styled(Button)`
