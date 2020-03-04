@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
-  background-color: grey;
-  padding: 2%;
+  color: blue;
+  font-size: 1rem;
+  padding: 1%;
   margin-bottom: 3%;
-  border: 2px solid black;
+  border: 2px solid blue;
 `;
 
 export default function Header() {

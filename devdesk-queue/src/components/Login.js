@@ -33,11 +33,19 @@ export default function Login(props) {
         <div className="login-form">
             <StyledSection>
       <StyledForm onSubmit={handleSubmit(handleLogin)}>
+        <StyledH1>Welcome Back!</StyledH1>
+        <p>Please login to continue.</p>
       <StyledGroup>
-      <input type="text" placeholder="Username" name="username" ref={register} />
+      <input type="text" placeholder="Username" name="username" ref={register({ required: "Error: Username is required" })} />
+      {errors.username && (
+            <p className="errors">{errors.username.message}</p>
+          )}
       </StyledGroup>
       <StyledGroup>
-      <input type="password" placeholder="Password" name="password" ref={register} />
+      <input type="password" placeholder="Password" name="password" ref={register({ required: "Error: Password is required" })} />
+      {errors.password && (
+            <p className="errors">{errors.password.message}</p>
+          )}
       </StyledGroup>
       <StyledGroup>
       <StyledButton block type="submit" color="success">
@@ -54,6 +62,7 @@ export default function Login(props) {
 const StyledButton = styled(Button)`
   background-color: #0066ff;
   width: 30%;
+  margin-bottom: 10%;
 `;
 
 const StyledGroup = styled(InputGroup)`
@@ -62,11 +71,14 @@ const StyledGroup = styled(InputGroup)`
 
 
 const StyledForm = styled.form`
-  margin-top: 15%;
 `;
 
 const StyledSection = styled.section`
   width: 25%;
-  margin-top: 5%;
-  justify-content: center;
+  margin: auto;
+  border: 2px solid blue;
 `;
+
+const StyledH1 = styled.h1`
+color: blue;
+`
