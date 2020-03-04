@@ -7,15 +7,13 @@ import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import TicketList from "./components/TicketList";
-// import Tickets from "./components/Tickets";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
        <div className="home-page">
       <Header />
       <NavBar />
-      {/* <Tickets /> */}
     </div>
       <Route path='/Login' component={Login} />
       <Route path="/Register" component={Register} /> 
@@ -25,4 +23,3 @@ function App() {
   );
 }
 
-export default App;

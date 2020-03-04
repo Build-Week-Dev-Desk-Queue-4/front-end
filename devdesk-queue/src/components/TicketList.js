@@ -3,6 +3,12 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import TicketCard from '../components/TicketCard'
 import styled from 'styled-components';
 
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+`
 
 const TicketList = (props) => {
     const [tickets, setTickets] = useState([
@@ -46,11 +52,12 @@ const TicketList = (props) => {
 
 
     return (
-        <div className="card-container">
+        <Container className="card-container">
+            <h1>Questions In The Q</h1>
             {/* <TicketCard tickets={tickets} toHome={toHome} /> */}
             {tickets.length > 0 ? tickets.map(ticket => <TicketCard key={ticket.id} ticket={ticket} toHome={toHome} />) :
             <div>Loading tickets...</div>}
-        </div>
+        </Container>
     )
 }
 
