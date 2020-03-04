@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import TicketCard from '../components/TicketCard'
+import styled from 'styled-components';
 
 
 const TicketList = (props) => {
-    const [tickets, setTickets] = useState({
+    const [tickets, setTickets] = useState([
+    // {
         // id: "",
         // asker_id: "",
         // created_at: "",
@@ -16,11 +18,12 @@ const TicketList = (props) => {
         // solved_by: "",
         // assignee: "",
         // assigned_by: ""
-    })
+    // }
+]);
 
     const toAxios = (id) =>{
         axiosWithAuth()
-        .get(`api/users/asker/4/tickets`)
+        .get(`api/tickets`)
         .then(res => {
             const ticketData = res.data;
             setTickets(ticketData)
@@ -44,7 +47,9 @@ const TicketList = (props) => {
 
     return (
         <div className="card-container">
-            <TicketCard tickets={tickets} toHome={toHome} />
+            {/* <TicketCard tickets={tickets} toHome={toHome} /> */}
+            {tickets.length > 0 ? tickets.map(ticket => <TicketCard key={ticket.id} ticket={ticket} toHome={toHome} />) :
+            <div>Loading tickets...</div>}
             
         </div>
     )
