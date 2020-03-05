@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Dashboard from './components/Dashboard';
 import TicketList from "./components/TicketList";
 
 export default function App() {
@@ -15,12 +16,11 @@ export default function App() {
        <div className="home-page">
       <Header />
       <NavBar />
-      <Sidebar />
     </div>
       <Route path='/Login' component={Login} />
       <Route path="/Register" component={Register} /> 
       {/* If you're logged in automatically takes you to app home */}
-      <PrivateRoute exact path='/(home|protected|\/|)/' component={TicketList} />
+      <PrivateRoute exact path='/(home|protected|\/|)/' component={Dashboard} />
     </div>
   );
 }

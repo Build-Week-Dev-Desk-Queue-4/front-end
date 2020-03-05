@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import TicketCard from '../components/TicketCard'
 import styled from 'styled-components';
@@ -10,6 +11,7 @@ const Container = styled.div`
 `
 
 const TicketList = (props) => {
+    const history = useHistory();
     const [tickets, setTickets] = useState([
     // {
         // id: "",
@@ -26,7 +28,7 @@ const TicketList = (props) => {
     // }
     ]);
 
-    const toAxios = (id) =>{
+    const getAllTickets = (id) =>{
         axiosWithAuth()
         .get(`api/tickets`)
         .then(res => {
@@ -34,19 +36,21 @@ const TicketList = (props) => {
             setTickets(ticketData)
             console.log('success', ticketData)
         })
-        .catch(err => console.log('Error', err.respond));
+        .catch(err => {
+            console.log('Error', err.respond);
+            //If unable to load initial tickets, it's likely due to
+            //an expired token. We need to route the user back to login
+            //when their token expires.
+            history.push('/login');
+        });
     }
 
     const toHome = () =>{
-        props.history.push("/home")
+        props.history.push("/home");
     }
 
     useEffect(() => {
-        const url = props.match.url;
-        const id = props.location.pathname.replace(`${url}/`, "")
-        if (id !== ""){
-            return toAxios(id)
-        }
+        getAllTickets();
     }, []);
 
 
