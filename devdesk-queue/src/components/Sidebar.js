@@ -132,7 +132,8 @@ const Container = styled.div`
     top: 0;
     left: 0;
     overflow: hidden;
-    background: #FFF;
+    background: orange;
+    color: white;
     padding-left: 30px;
     padding-top: 30px;
     a {
