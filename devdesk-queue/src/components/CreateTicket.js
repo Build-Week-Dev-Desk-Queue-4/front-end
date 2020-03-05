@@ -14,18 +14,32 @@ export default function CreateTicket() {
   console.log(errors);
 
   const handleCreateTicket = (data) => {
-    console.log(data)
-    axiosWithAuth()
-        .post('api/tickets/', data)
-        .then(res => {
-          dispatch(updateUser(res.data.user));
-          setCreateTicket(res.data.user);
-          localStorage.setItem('user', res.data.user.id);
-          localStorage.setItem('token', res.data.token);
-          history.push('/protected');
-        })
-        .catch(err => console.log('Post err', err));
-};
+    console.log()
+    data = {
+      ...data,
+      asker_id: localStorage.getItem('user')
+    }
+    axiosWithAuth().post('api/tickets/', data).then(res => {
+      //res.data returns the created ticket
+      history.push('/protected');
+    })
+    .catch(err => console.log('Post err', err));
+  }
+
+
+//   const handleCreateTicket = (data) => {
+//     console.log(data)
+//     axiosWithAuth()
+//         .post('api/tickets/', data)
+//         .then(res => {
+//           dispatch(updateUser(res.data.user));
+//           setCreateTicket(res.data.user);
+//           localStorage.setItem('user', res.data.user.id);
+//           localStorage.setItem('token', res.data.token);
+//           history.push('/protected');
+//         })
+//         .catch(err => console.log('Post err', err));
+// };
 
   return (
     <div className="create-ticket-form">

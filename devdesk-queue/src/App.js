@@ -21,7 +21,7 @@ export default function App() {
       <Route path='/Login' component={Login} />
       <Route path="/Register" component={Register} /> 
       {/* If you're logged in automatically takes you to app home */}
-      <PrivateRoute exact path='/(home|protected|\/|)/' component={TicketList}/>
+      <PrivateRoute exact path='/(home|protected|\/|)/' component={TicketList} />
     </div>
   );
 }
