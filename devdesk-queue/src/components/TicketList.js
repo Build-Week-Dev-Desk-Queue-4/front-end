@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import TicketCard from '../components/TicketCard'
 import styled from 'styled-components';
+import CreateTicket from './CreateTicket';
 
 const Container = styled.div`
     display: flex;
@@ -27,13 +28,14 @@ const TicketList = (props) => {
         // assigned_by: ""
     // }
     ]);
+    const [newTicket, setNewTicket] = useState({});
 
     const getAllTickets = (id) =>{
         axiosWithAuth()
-        .get(`api/tickets`)
+        .get(`api/tickets/all/newest`)
         .then(res => {
             const ticketData = res.data;
-            setTickets(ticketData)
+            setTickets(ticketData);
             console.log('success', ticketData)
         })
         .catch(err => {
@@ -51,11 +53,12 @@ const TicketList = (props) => {
 
     useEffect(() => {
         getAllTickets();
-    }, []);
+    }, [newTicket]);
 
 
     return (
         <Container className="card-container">
+            <CreateTicket setNewTicket={setNewTicket} />
             <h1>Questions In The Q</h1>
             {/* <TicketCard tickets={tickets} toHome={toHome} /> */}
             {tickets.length > 0 ? tickets.map(ticket => <TicketCard key={ticket.id} ticket={ticket} toHome={toHome} />) :

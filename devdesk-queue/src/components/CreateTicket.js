@@ -1,14 +1,31 @@
-import React from "react";
+import React, {useState} from "react";
+import { useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { createStore } from "redux";
 
-export default function CreateTicket() {
+export default function CreateTicket({ newTicket, setNewTicket }) {
+  const history = useHistory();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => console.log(data);
-  console.log(errors);
+
+  const createTicket = (data) => {
+    data = {
+      ...data,
+      asker_id: localStorage.getItem('user')
+    }
+    console.log('this is data in createTicket:', data);
+    axiosWithAuth().post('api/tickets/', data).then(res => {
+      //res.data returns the created ticket
+      setNewTicket(res.data);
+      history.push('/protected');
+    })
+    .catch(({message, errorMessage}) => console.log('Post err', message, errorMessage));
+  }
 
   return (
     <div className="create-ticket-form">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(createTicket)}>
         <h1>Submit Your Question to the Q!</h1>
         <label>
           Title:
