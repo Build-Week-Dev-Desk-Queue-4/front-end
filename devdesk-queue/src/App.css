@@ -39,3 +39,8 @@ font-weight: bold;
   display: flex;
   justify-content: center;
 }
+
+.nav-link:hover {
+  text-decoration: none;
+  color: orange;
+}

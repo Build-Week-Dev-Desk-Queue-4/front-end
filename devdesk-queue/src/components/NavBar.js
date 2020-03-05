@@ -6,9 +6,9 @@ const NavBar = () => {
   return (
     <>
       <Navigate>
-        <NavLink to="/Register">Register</NavLink>
-        <NavLink to="/protected">Tickets</NavLink>
-        <NavLink to="/Login">Log In</NavLink>
+        <NavLink className="nav-link" to="/Register">Register</NavLink>
+        <NavLink className="nav-link" to="/protected">Tickets</NavLink>
+        <NavLink className="nav-link" to="/Login">Log In</NavLink>
       </Navigate>
     </>
   );
@@ -23,13 +23,13 @@ const NavLink = styled(Link)`
   font-size: 1rem;
   font-weight: bold;
 `;
+
 const Navigate = styled.div`
   font-family: verdana;
-  background-color: #0066ff;
+  background-color: blue;
   padding: .25%;
+  margin-bottom: 2.5%;
   display: flex;
   justify-content: space-evenly;
-  position: fixed;
-  top: 0;
   width: 100%;
 `;
