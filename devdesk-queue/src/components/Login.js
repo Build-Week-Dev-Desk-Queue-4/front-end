@@ -1,40 +1,37 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../actions/actions';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useForm } from "react-hook-form";
 import { Button, InputGroup, Input } from "reactstrap";
 import styled from "styled-components";
 
 export default function Login(props) {
+  const dispatch = useDispatch();
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    const [ user, setUser ] = useState({});
     console.log(errors);
-
-    const [credentials, setCredentials] = useState({
-        username: '',
-        password: ''
-    })
   
     const handleLogin = (data) => {
         console.log(data)
         axiosWithAuth()
             .post('api/auth/login', data)
             .then(res => {
-                console.log(res.data)
-                console.log(res.data.token)
-                //store user id in localstorage
-                window.localStorage.setItem('token', res.data.token);
-                history.push('/protected');
+              dispatch(updateUser(res.data.user));
+              setUser(res.data.user);
+              localStorage.setItem('user', res.data.user.id);
+              localStorage.setItem('token', res.data.token);
+              history.push('/protected');
             })
             .catch(err => console.log('Post err', err));
     };
 
-   
   return (
-  <div className="login-form">
-      <StyledSection>
-      <StyledForm onSubmit={handleSubmit(handleLogin)}>
+    <div className="login-form">
+    <StyledSection>
+    <StyledForm onSubmit={handleSubmit(handleLogin)}>
         <StyledH1>Welcome Back!</StyledH1>
         <p>Please login to continue.</p>
       <StyledGroup>
@@ -56,9 +53,8 @@ export default function Login(props) {
       </StyledGroup>
     </StyledForm>
     </StyledSection>
-            </div>
-        );
-    
+    </div>
+  );
 }
 
 const StyledButton = styled(Button)`
