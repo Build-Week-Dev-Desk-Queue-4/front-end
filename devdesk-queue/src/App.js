@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {  Route } from "react-router-dom";
 import  PrivateRoute from './components/PrivateRoute';
+import Sidebar from './components/Sidebar';
 import NavBar from './components/NavBar';
 import Header from "./components/Header";
 import Register from "./components/Register";
@@ -14,11 +15,12 @@ export default function App() {
        <div className="home-page">
       <Header />
       <NavBar />
+      <Sidebar />
     </div>
       <Route path='/Login' component={Login} />
       <Route path="/Register" component={Register} /> 
-      <PrivateRoute exact path='/home' component={TicketList} />
-      {/* <PrivateRoute path="/" component={test} /> */}
+      {/* If you're logged in automatically takes you to app home */}
+      <PrivateRoute exact path='/(home|protected|\/|)/' component={TicketList} />
     </div>
   );
 }

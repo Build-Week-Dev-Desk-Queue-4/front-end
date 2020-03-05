@@ -34,7 +34,7 @@ const TicketList = (props) => {
             setTickets(ticketData)
             console.log('success', ticketData)
         })
-        .catch(err => console.log('Error', err.respond))
+        .catch(err => console.log('Error', err.respond));
     }
 
     const toHome = () =>{

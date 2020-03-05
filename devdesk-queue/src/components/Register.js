@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { updateUser } from '../actions/actions';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { Button, InputGroup, Input } from "reactstrap";
 import styled from "styled-components";
 
 
 export default function Register(props) {
-
+  const dispatch = useDispatch();
+  const history = useHistory();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => console.log(data);
   console.log('Errors:', errors);
@@ -26,10 +30,10 @@ export default function Register(props) {
     axiosWithAuth()
     .post('api/auth/register', data)
     .then(res => {
-      console.log(res, 'token')
-      console.log(res.data)
-      window.localStorage.setItem('token', res.data.token);
-      props.history.push('/protected');      
+      dispatch(updateUser(res.data.user));
+      localStorage.setItem('user', res.data.user.id);
+      localStorage.setItem('token', res.data.token);
+      history.push('/protected');      
     })
     .catch(err => console.log('Post err', err));
   };
