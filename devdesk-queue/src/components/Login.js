@@ -33,7 +33,7 @@ export default function Login(props) {
   return (
   <div className="login-form">
       <StyledSection>
-      <StyledForm onSubmit={handleSubmit(handleLogin)}>
+      <form onSubmit={handleSubmit(handleLogin)}>
         <StyledH1>Welcome Back!</StyledH1>
         <p>Please login to continue.</p>
       <StyledGroup>
@@ -53,7 +53,7 @@ export default function Login(props) {
           Login
         </StyledButton>
       </StyledGroup>
-    </StyledForm>
+    </form>
     </StyledSection>
             </div>
         );
@@ -68,10 +68,6 @@ const StyledButton = styled(Button)`
 
 const StyledGroup = styled(InputGroup)`
   margin-bottom: 2%;
-`;
-
-
-const StyledForm = styled.form`
 `;
 
 const StyledSection = styled.section`

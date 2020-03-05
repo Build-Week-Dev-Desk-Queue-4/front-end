@@ -38,7 +38,7 @@ export default function Register(props) {
     return(
       <div className="register-form">
         <StyledSection>
-      <StyledForm onSubmit={handleSubmit(handleRegister)}>
+      <form onSubmit={handleSubmit(handleRegister)}>
         <StyledH1>Register to Join DevDesk Q</StyledH1>
         <p>Please enter your infromation below.</p>
       <StyledGroup>
@@ -81,7 +81,7 @@ export default function Register(props) {
       <StyledButton block type="submit" color="success">
           Register
         </StyledButton>
-    </StyledForm>
+    </form>
     </StyledSection>
     </div>
 
@@ -98,11 +98,6 @@ const StyledButton = styled(Button)`
 
 const StyledGroup = styled(InputGroup)`
   margin-bottom: 2%;
-`;
-
-
-const StyledForm = styled.form`
- 
 `;
 
 const StyledSection = styled.section`
