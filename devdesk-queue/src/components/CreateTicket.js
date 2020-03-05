@@ -1,14 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../actions/actions';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 export default function CreateTicket() {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data);
+  const [createTicket, setCreateTicket] = useState();
+  const dispatch = useDispatch();
+    const history = useHistory();
+  // const onSubmit = data => console.log(data);
   console.log(errors);
+
+  const handleCreateTicket = (data) => {
+    console.log(data)
+    axiosWithAuth()
+        .post('api/tickets/', data)
+        .then(res => {
+          dispatch(updateUser(res.data.user));
+          setCreateTicket(res.data.user);
+          localStorage.setItem('user', res.data.user.id);
+          localStorage.setItem('token', res.data.token);
+          history.push('/protected');
+        })
+        .catch(err => console.log('Post err', err));
+};
 
   return (
     <div className="create-ticket-form">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleCreateTicket)}>
         <h1>Submit Your Question to the Q!</h1>
         <label>
           Title:

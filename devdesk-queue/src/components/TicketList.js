@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import TicketCard from '../components/TicketCard'
+import TicketCard from '../components/TicketCard';
+import CreateTicket from '../components/CreateTicket';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -51,7 +52,7 @@ const TicketList = (props) => {
 
 
     return (
-        <Container className="card-container">
+          <Container className="card-container">
             <h1>Questions In The Q</h1>
             {/* <TicketCard tickets={tickets} toHome={toHome} /> */}
             {tickets.length > 0 ? tickets.map(ticket => <TicketCard key={ticket.id} ticket={ticket} toHome={toHome} />) :

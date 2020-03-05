@@ -12,7 +12,7 @@ export default function Register(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data);
+  // const onSubmit = data => console.log(data);
   console.log('Errors:', errors);
 
   const [credentials, setCredentials] = useState({
