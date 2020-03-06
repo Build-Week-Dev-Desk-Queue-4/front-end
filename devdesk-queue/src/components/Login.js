@@ -10,12 +10,12 @@ import styled from "styled-components";
 export default function Login(props) {
   const dispatch = useDispatch();
     const history = useHistory();
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit } = useForm();
     const [ user, setUser ] = useState({});
-    console.log(errors);
+    // console.log(errors);
   
     const handleLogin = (data) => {
-        console.log(data)
+        console.log("this is data inside of handle login", data)
         axiosWithAuth()
             .post('api/auth/login', data)
             .then(res => {
@@ -27,7 +27,7 @@ export default function Login(props) {
             })
             .catch(err => console.log('Post err', err));
     };
-
+console.log()
   return (
   <div className="login-form">
     <StyledH1>Welcome Back!</StyledH1>
@@ -35,12 +35,12 @@ export default function Login(props) {
      <StyledSection>
         <StyledForm onSubmit={handleSubmit(handleLogin)}>
         <FormGroup>
-        <Label for="username">Username</Label>
-        <Input type="text" name="username" id="username" placeholder="username" required/>
+        <Label for="username">Username: </Label>
+        <input type="text" name="username" id="username" placeholder="username" ref={register} required/>
       </FormGroup>
       <FormGroup>
-        <Label for="password">Password</Label>
-        <Input type="password" name="password" id="password" placeholder="password" required/>
+        <Label for="password">Password: </Label>
+        <input type="password" name="password" id="password" placeholder="password" ref={register} required/>
       </FormGroup>      
         <StyledButton className="login-button" type="submit" color="success">
           Login

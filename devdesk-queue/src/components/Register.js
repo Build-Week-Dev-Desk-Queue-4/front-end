@@ -46,32 +46,32 @@ export default function Register(props) {
         <StyledSection>
       <StyledForm onSubmit={handleSubmit(handleRegister)}>
         <FormGroup>
-        <Label for="first_name">First Name</Label>
-        <Input type="text" name="first_name" id="first_name" placeholder="first name" required/>
+        <Label for="first_name">First Name: </Label>
+        <input type="text" name="first_name" id="first_name" placeholder="first name" required/>
       </FormGroup>
       <FormGroup>
-        <Label for="last_name">Last Name</Label>
-        <Input type="text" name="last_name" id="last_name" placeholder="last name" required/>
+        <Label for="last_name">Last Name: </Label>
+        <input type="text" name="last_name" id="last_name" placeholder="last name" required/>
       </FormGroup>      
       <FormGroup>
-        <Label for="email">Email</Label>
-        <Input type="text" name="email" id="email" placeholder="email" required/>
+        <Label for="email">Email: </Label>
+        <input type="text" name="email" id="email" placeholder="email" required/>
       </FormGroup>
       <FormGroup>
-        <Label for="username">Username</Label>
-        <Input type="text" name="username" id="username" placeholder="username" required/>
+        <Label for="username">Username: </Label>
+        <input type="text" name="username" id="username" placeholder="username" required/>
       </FormGroup>
       <FormGroup>
-        <Label for="password">Password</Label>
-        <Input type="password" name="password" id="password" placeholder="password" required/>
+        <Label for="password">Password: </Label>
+        <input type="password" name="password" id="password" placeholder="password" required/>
       </FormGroup>      
       <FormGroup>
-        <Label for="role">Role</Label>
-        <Input type="select" name="role" id="role" required>
+        <Label for="role">Role: </Label>
+        <select type="select" name="role" id="role">
           <option disabled>Choose one...</option>
           <option>Student</option>
           <option>Team Lead</option>
-        </Input>
+        </select>
       </FormGroup>
       <StyledButton className="register-button" type="submit" color="success">
           Register

@@ -4,10 +4,11 @@ import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import styled from "styled-components";
+import { createStore } from "redux";
 
 export default function CreateTicket({ newTicket, setNewTicket }) {
   const history = useHistory();
-  const { handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   // const onSubmit = data => console.log(data);
 
   const createTicket = (data) => {
@@ -16,7 +17,8 @@ export default function CreateTicket({ newTicket, setNewTicket }) {
       asker_id: localStorage.getItem('user')
     }
     console.log('this is data in createTicket:', data);
-    axiosWithAuth().post('api/tickets/', data).then(res => {
+    axiosWithAuth().post('api/tickets/', data)
+    .then(res => {
       //res.data returns the created ticket
       setNewTicket(res.data);
       history.push('/protected');
@@ -30,16 +32,16 @@ export default function CreateTicket({ newTicket, setNewTicket }) {
        <StyledP>Please fill out the form below to submit a question.</StyledP>
       <FormStyled onSubmit={handleSubmit(createTicket)}>
         <FormGroup>
-        <Label for="title">Title</Label>
-        <Input type="text" name="title" id="title" placeholder="Question title" required/>
+        <Label for="title">Title: </Label>
+        <input type="text" name="title" id="title" placeholder="Question title" ref={register} required/>
       </FormGroup>
         <FormGroup>
-        <Label for="description">Description</Label>
-        <Input type="textarea" name="description" id="description" placeholder="Ask your question here" required/>
+        <Label for="description">Description: </Label>
+        <input type="textarea" name="description" id="description" placeholder="Ask your question here" ref={register} required/>
       </FormGroup>
       <FormGroup>
-        <Label for="category">Category</Label>
-        <Input type="select" name="category" id="category" required>
+        <Label for="category">Category: </Label>
+        <select type="select" name="category" id="category" ref={register}>
           <option disabled>Choose one...</option>
           <option>HTML</option>
           <option>CSS</option>
@@ -48,7 +50,7 @@ export default function CreateTicket({ newTicket, setNewTicket }) {
           <option>Java</option>
           <option>Python</option>
           <option>Other</option>
-        </Input>
+        </select>
       </FormGroup>
         <ButtonStyled className="submit-to-q-button" type="submit">
           Submit to Q

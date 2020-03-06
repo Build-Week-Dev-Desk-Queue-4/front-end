@@ -2,14 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import TicketCard from '../components/TicketCard';
-import CreateTicket from './CreateTicket';
+import CreateTicket from '../components/CreateTicket';
 import styled from 'styled-components';
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
 
 const TicketList = (props) => {
     const history = useHistory();
@@ -69,6 +63,12 @@ const TicketList = (props) => {
 
 const H1Styled = styled.h1`
 color: blue;
+`
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 export default TicketList;
