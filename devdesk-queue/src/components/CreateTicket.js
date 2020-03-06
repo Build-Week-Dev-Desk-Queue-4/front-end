@@ -9,8 +9,7 @@ import { createStore } from "redux";
 export default function CreateTicket({ newTicket, setNewTicket }) {
   const history = useHistory();
   const { register, handleSubmit } = useForm();
-  // const onSubmit = data => console.log(data);
-
+  
   const createTicket = (data) => {
     data = {
       ...data,

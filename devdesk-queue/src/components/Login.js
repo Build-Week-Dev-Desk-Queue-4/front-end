@@ -12,8 +12,7 @@ export default function Login(props) {
     const history = useHistory();
     const { register, handleSubmit } = useForm();
     const [ user, setUser ] = useState({});
-    // console.log(errors);
-  
+      
     const handleLogin = (data) => {
         console.log("this is data inside of handle login", data)
         axiosWithAuth()
@@ -27,7 +26,7 @@ export default function Login(props) {
             })
             .catch(err => console.log('Post err', err));
     };
-console.log()
+
   return (
   <div className="login-form">
     <StyledH1>Welcome Back!</StyledH1>

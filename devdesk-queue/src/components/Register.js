@@ -11,10 +11,8 @@ import styled from "styled-components";
 export default function Register(props) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { register, handleSubmit, errors } = useForm();
-  // const onSubmit = data => console.log(data);
-  console.log('Errors:', errors);
-
+  const { register, handleSubmit } = useForm();
+ 
   const [credentials, setCredentials] = useState({
     username: '',
     password: '',
@@ -23,7 +21,6 @@ export default function Register(props) {
     last_name: '',
     email: ''
 })
-
 
   const handleRegister = (data) => {
     console.log(data)
@@ -37,7 +34,6 @@ export default function Register(props) {
     })
     .catch(err => console.log('Post err', err));
   };
-
  
     return(
       <div className="register-form">
@@ -47,27 +43,27 @@ export default function Register(props) {
       <StyledForm onSubmit={handleSubmit(handleRegister)}>
         <FormGroup>
         <Label for="first_name">First Name: </Label>
-        <input type="text" name="first_name" id="first_name" placeholder="first name" required/>
+        <input type="text" name="first_name" id="first_name" placeholder="first name" ref={register} required/>
       </FormGroup>
       <FormGroup>
         <Label for="last_name">Last Name: </Label>
-        <input type="text" name="last_name" id="last_name" placeholder="last name" required/>
+        <input type="text" name="last_name" id="last_name" placeholder="last name" ref={register} required/>
       </FormGroup>      
       <FormGroup>
         <Label for="email">Email: </Label>
-        <input type="text" name="email" id="email" placeholder="email" required/>
+        <input type="text" name="email" id="email" placeholder="email" ref={register} required/>
       </FormGroup>
       <FormGroup>
         <Label for="username">Username: </Label>
-        <input type="text" name="username" id="username" placeholder="username" required/>
+        <input type="text" name="username" id="username" placeholder="username" ref={register} required/>
       </FormGroup>
       <FormGroup>
         <Label for="password">Password: </Label>
-        <input type="password" name="password" id="password" placeholder="password" required/>
+        <input type="password" name="password" id="password" placeholder="password" ref={register} required/>
       </FormGroup>      
       <FormGroup>
         <Label for="role">Role: </Label>
-        <select type="select" name="role" id="role">
+        <select type="select" name="role" id="role" ref={register}>
           <option disabled>Choose one...</option>
           <option>Student</option>
           <option>Team Lead</option>
@@ -79,7 +75,6 @@ export default function Register(props) {
     </StyledForm>
     </StyledSection>
     </div>
-
     )
   }
 
